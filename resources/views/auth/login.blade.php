@@ -2,32 +2,50 @@
 @section('content')
 
 <div class="auth">
-    <div class="flex-center flex-column">
-        <div class="card">
-            <div class="card-header p-4 text-center">
-                <h4>Login</h4>
-                @if(Session::has('error'))
+        <div class="flex-center flex-column">
+            <div class="card shadow border-0">
+                <div class="card-header text-center bg-white">
+                    <h4 class="mb-0">Login</h4>
+                </div>
+                <div class="card-body shadow-sm">
+                    @if(Session::has('error'))
                     <p class="text-danger">{{Session::get('error')}}</p>
-                @endif
-            </div>
-            <div class="card-body">
-                <form method="POST" action="{{ route('login') }}">
-                    @csrf
-                    <div class="form-group mb-3">
-                        <p class="mb-0">Email</p>
-                        <input type="text" name="email" class="form-control">
-                    </div>
+                    @endif
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
 
-                    <div class="form-group mb-3">
-                        <p class="mb-0">Password</p>
-                        <input type="password" name="password" class="form-control">
-                    </div>
+                        <div class="form-group">
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            <label for="email">{{ __('E-Mail Address') }}</label>
+                            <input id="email" type="email" class="form-control rounded-0 shadow-none @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
+                        </div>
 
-                    <button type="submit" class="btn btn-block btn-info">Login</button>
-                </form>
+                        <div class="form-group">
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            <label for="password">{{ __('Password') }}</label>
+                            <input id="password" type="password" class="form-control rounded-0 shadow-none @error('password') is-invalid @enderror" name="password" autocomplete="current-password">
+                        </div>
+
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary shadow-none text-white px-4">Login</button>
+                        </div>
+                        <div class="text-right pt-2">
+                            <p class="mb-0">Have on account ? <a href="{{url('/register')}}">Register</a></p>
+                        </div>
+                       
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
 
 @endsection

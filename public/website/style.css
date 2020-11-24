@@ -1,8 +1,40 @@
-/* Auth */
+/* Auth Start */
 
 .auth {
     width: 100%;
     height: 100vh;
+}
+
+.auth .card {
+    border-radius: 8px;
+}
+
+.auth .card .card-header {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.auth .card .card-header h4 {
+    font-weight: 900;
+    margin-bottom: 0;
+    font-family: 'Secular One', sans-serif;
+}
+
+.auth .card .card-body {
+    color: #000;
+    font-weight: 400;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.auth .card .card-body .form-control {
+    color: #000;
+}
+
+.auth .card .card-body .form-control:focus {
+    border: 1px solid #000;
 }
 
 @media(max-width: 576px) {
@@ -13,9 +45,11 @@
 
 @media(min-width: 576px) {
     .auth .card {
-        width: 450px;
+        width: 500px;
     }
 }
+
+/* Auth End */
 
 .flex-center {
     display: -webkit-box;
